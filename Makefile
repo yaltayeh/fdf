@@ -19,7 +19,7 @@ else ifeq ($(UNAME_S), Darwin)
 	INCLUDE += -I/usr/X11/include -I$(MLX_DIR)
 endif
 
-SOURCES = matrix/matrix.c main.c
+SOURCES = matrix/matrix.c main.c events.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
