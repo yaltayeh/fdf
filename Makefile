@@ -7,7 +7,7 @@ INCLUDE += -I./libft/include
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
-	MLX_DIR = ./minilibx_linux
+	MLX_DIR = ./minilibx-linux
 	MLX_FLAGS += -L$(MLX_DIR) -lmlx -lXext -lX11
 	INCLUDE += -I$(MLX_DIR)
 
@@ -32,13 +32,13 @@ submodules:
 	git submodule update
 
 mlx:
-	@$(MAKE) -C $(MLX_DIR) 2> /dev/null
+	$(MAKE) -C $(MLX_DIR) # 2> /dev/null
 
 libft:
 	@$(MAKE) -C libft
 
 $(NAME): $(OBJECTS) | libft mlx 
-	$(CC) $(CFLAGS) $(FT_FLAGS) $(MLX_FLAGS) $(INCLUDE) $(OBJECTS) -o $@ 
+	$(CC) $(CFLAGS) $(OBJECTS) $(FT_FLAGS) $(MLX_FLAGS) $(INCLUDE) -o $@ 
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
