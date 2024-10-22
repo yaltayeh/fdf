@@ -1,7 +1,6 @@
-#include <libft.h>
-#include "matrix/point.h"
+//#include <libft.h>
+//#include "matrix/point.h"
 #include <mlx.h>
-
 
 int main()
 {
