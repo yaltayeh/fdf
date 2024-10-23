@@ -18,11 +18,17 @@ typedef struct s_fdf_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		controller_fd;
 	int		w;
 	int		h;
-	float	test;
-	float	test2;
+	float	cx;
+	float	cy;
+	float	cx2;
+	float	cy2;
+	int mask;
 } t_fdf_data;
+
+int	destroy_event(t_fdf_data *data);
 
 int events_config(t_fdf_data *data);
 

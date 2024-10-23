@@ -1,7 +1,7 @@
 NAME = fdf
 
 CC = cc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror -g3
 FT_FLAGS = -L./libft -lft
 INCLUDE += -I./libft/include
 
@@ -24,12 +24,12 @@ SOURCES = matrix/matrix.c main.c events.c
 OBJECTS = $(SOURCES:.c=.o)
 
 
-all: submodules $(NAME)
+all: $(NAME)
 
 
-submodules:
-	git submodule init
-	git submodule update
+#submodules:
+#	git submodule init
+#	git submodule update
 
 mlx:
 	$(MAKE) -C $(MLX_DIR) # 2> /dev/null

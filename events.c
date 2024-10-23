@@ -4,20 +4,20 @@
 
 #define INFO(fmt, ...) printf("%s: "fmt"\n", __func__, ##__VA_ARGS__); (void)data;
 
-int	destroy_event(t_fdf_data *data);
 
 int key_down_event(int keycode, t_fdf_data *data)
 {
-	INFO("key=%d", keycode);
-	if (keycode == 126)
-		data->test += 0.1f;
-	if (keycode == 125)
-		data->test -= 0.1f;
-	if (keycode == 123)
-		data->test2 -= 0.1f;
-	if (keycode == 124)
-		data->test2 += 0.1f;
-	if (keycode == 53)
+	//INFO("key=%d", keycode);
+	if (keycode == 65361)
+		data->cx -= 10;
+	else if (keycode == 65363)
+		data->cx += 10;
+	else if (keycode == 65364)
+		data->cy += 10;
+	else if (keycode == 65362)
+		data->cy -= 10;
+
+	if (keycode == 65307)
 		destroy_event(data);
 	return (0);
 }
@@ -63,12 +63,13 @@ int	destroy_event(t_fdf_data *data)
 
 int events_config(t_fdf_data *data)
 {
-	mlx_hook(data->win_ptr, ON_KEYDOWN,   0, key_down_event,    data);
-	mlx_hook(data->win_ptr, ON_KEYUP,     0, key_up_event,      data);
-	mlx_hook(data->win_ptr, ON_MOUSEDOWN, 0, mouse_down_event,  data);
-	mlx_hook(data->win_ptr, ON_MOUSEUP,   0, mouse_up_event,    data);
+	mlx_key_hook(data->win_ptr, key_down_event, data);
+//	mlx_hook(data->win_ptr, ON_KEYDOWN,   0, key_down_event,    data);
+//	mlx_hook(data->win_ptr, ON_KEYUP,     0, key_up_event,      data);
+//	mlx_hook(data->win_ptr, ON_MOUSEDOWN, 0, mouse_down_event,  data);
+//	mlx_hook(data->win_ptr, ON_MOUSEUP,   0, mouse_up_event,    data);
 //	mlx_hook(data->win_ptr, ON_MOUSEMOVE, 0, mouse_move_event,  data);
-	mlx_hook(data->win_ptr, ON_EXPOSE,    0, expose_event,      data);
+//	mlx_hook(data->win_ptr, ON_EXPOSE,    0, expose_event,      data);
 	mlx_hook(data->win_ptr, ON_DESTROY,   0, destroy_event,     data);
 	return (0);
 }
