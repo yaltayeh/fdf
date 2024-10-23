@@ -11,8 +11,8 @@
 # define ON_EXPOSE		12	// int (*f)(void *param)
 # define ON_DESTROY		17	// int (*f)(void *param)
 
-#define W 800
-#define H 400
+#define W 1200
+#define H 750
 
 typedef struct s_fdf_data
 {
@@ -20,6 +20,8 @@ typedef struct s_fdf_data
 	void	*win_ptr;
 	int		w;
 	int		h;
+	float	test;
+	float	test2;
 } t_fdf_data;
 
 int events_config(t_fdf_data *data);
